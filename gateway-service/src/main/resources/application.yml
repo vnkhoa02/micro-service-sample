@@ -1,0 +1,17 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        #Route Mapping
+        - id: images-service
+          uri: http://localhost:8002/
+          predicates:
+            - Path=/images/**
+        - id: audio-service
+          uri: http://localhost:8003/
+          predicates:
+            - Path=/audio/**
